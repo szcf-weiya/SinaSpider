@@ -38,12 +38,12 @@ class SinaCrawl():
 
                          
     def getHeader(self):
-        fUserAgent = open('UserAgent.txt')
-        content = fUserAgent.read()
-        pattern = re.compile('User-Agent:.*[^\n]')
-        UserAgentList = pattern.findall(content)
-        UserAgent = UserAgentList[random.choice(range(len(UserAgentList)))]
-        user_agent1, user_agent2 = UserAgent.split('User-Agent:')
+        #fUserAgent = open('UserAgent.txt')
+        #content = fUserAgent.read()
+        #pattern = re.compile('User-Agent:.*[^\n]')
+        #UserAgentList = pattern.findall(content)
+        #UserAgent = UserAgentList[random.choice(range(len(UserAgentList)))]
+        #user_agent1, user_agent2 = UserAgent.split('User-Agent:')
         #Referers =['https://www.baidu.com/', 'http://http://s.weibo.com/weibo/%25E7%258E%258B%25E9%25B8%25A5%2B%25E5%259B%259E%25E5%25BA%2594&Refer=STopic_top',
         #           'https://www.google.com/','https://www.hao123.com/','http://www.sogou.com']
         #referer = random.choice(Referers)
