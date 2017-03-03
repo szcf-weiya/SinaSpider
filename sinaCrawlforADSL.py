@@ -215,19 +215,29 @@ class SinaCrawl():
             WeiboItemPraised = soupFeed.ul.contents[7]
             WeiboItemComment = soupFeed.ul.contents[5]
             WeiboItemForward = soupFeed.ul.contents[3]
+
+            praisedString = WeiboItemPraised.contents[0].contents[0].contents[1].string
+            commentContent = WeiboItemComment.contents[0].contents[0].contents
+            forwardString = WeiboItemForward.contents[0].contents[0].contents[1].string
     
-            if WeiboItemPraised.contents[0].contents[0].contents[1].string == None:
+            if praisedString == None:
                 praised = 0
             else:
-                praised = int(str(WeiboItemPraised.contents[0].contents[0].contents[1].string))
-            if len(WeiboItemComment.contents[0].contents[0].contents) == 1:
+                praised = int(str(praisedString))
+#            if len(WeiboItemComment.contents[0].contents[0].contents) == 1:
+#                comment = 0
+#            else:
+#                comment = int(str(WeiboItemComment.contents[0].contents[0].contents[1].string))
+            if len(commentContent) == 1:
                 comment = 0
             else:
-                comment = int(str(WeiboItemComment.contents[0].contents[0].contents[1].string))
-            if WeiboItemForward.contents[0].contents[0].contents[1].string == None:
+                comment = int(str(commentContent[1].string))
+
+            if forwardString == None:
                 forward = 0
             else:
-                forward = int(str(WeiboItemForward.contents[0].contents[0].contents[1].string))
+                forward = int(str(forwardString))
+                
             weiboitem = (mid, content, weibotime, praised, comment, forward)
             self.conn.execute("INSERT INTO weibo VALUES(?,?,?,?,?,?)", weiboitem)
             self.conn.commit()
